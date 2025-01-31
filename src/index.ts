@@ -11,8 +11,14 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { Client } from 'fauna'
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		// Property 'default' does not exist on type 'CacheStorage'
+		// Works if Line 14 is Commented Out / Removed
+		const cache = caches.default
+
 		return new Response('Hello World!');
 	},
 } satisfies ExportedHandler<Env>;
